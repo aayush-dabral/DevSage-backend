@@ -39,6 +39,7 @@ exports.login = async (req, res, next) => {
         res.cookie('jwtoken', token, {
             maxAge: 86400000,
             httpOnly: true,
+            SameSite: None
         })
 
         res.send(user.roles)
@@ -59,6 +60,7 @@ exports.logout = async (req, res, next) => {
                 res.cookie('jwtoken', "" ,{
                     maxAge: 86400000,
                     httpOnly: true,
+                    SameSite: None
                 })
                 res.status(201).send('Token deleted successfully.');
             } else {
