@@ -7,6 +7,10 @@ const Authenticate = async (req, res, next) => {
         // const token = req.headers.cookie.split("=")[1]; //Req from postman
         // const token = req.cookie.split("jwtoken=")[1]; //Req for browser
 
+        if(!req.headers.cookie){
+            return res.status(200).send("No token provided")
+        }
+
         const cookieSegments = req.headers.cookie.split('; ');
 
         // Initialize a variable to store the token value
